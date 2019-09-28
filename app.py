@@ -7,12 +7,12 @@ import datetime
 from email.mime.text import MIMEText
 
 
-def send(q):
+def send(q, do, place):
     msg = email.message.Message()
 
     number = ("แจ้งเตือน!!! หมายเลข {}".format(q)).encode('utf-8').decode()
-    text = "อีก 10 คิว จะถึงคิวรับยาของท่าน กรุณาไปรอที่บริเวณ".encode('utf-8').decode()
-    place = "ห้องจ่ายยา".encode('utf-8').decode()
+    text = ("อีก 10 คิว จะถึงคิว {} ของท่าน กรุณาไปรอที่บริเวณ".format(do)).encode('utf-8').decode()
+    place = place.encode('utf-8').decode()
     body = """  <h1 style='color:blue'>{0}</h1>
                 <h2>{1} <u>{2}</u></h2> """.format(number, text, place)
     msg = MIMEText(body, 'html', 'utf-8')
@@ -34,4 +34,4 @@ def send(q):
 
 
 if __name__ == '__main__':
-    send("A107")
+    send("A107", "ซักประวัติ", "จุดซักประวัติ")
