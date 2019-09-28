@@ -7,7 +7,7 @@ import datetime
 from email.mime.text import MIMEText
 
 
-def send(q, do, place, hos):
+def send(to, q, do, place, hos):
     msg = email.message.Message()
 
     number = ("แจ้งเตือน!!! หมายเลข {}".format(q)).encode('utf-8').decode()
@@ -19,7 +19,7 @@ def send(q, do, place, hos):
 
     msg['Subject'] = Header(number, "utf-8")
     msg['From'] = 'เแจ้งเตือนคิว{} <alerthosqueue@gmail.com>'.format(hos)
-    msg['To'] = 'tehnnn@gmail.com'
+    msg['To'] = str(to)
     msg.add_header('Content-Type', 'text/html')
 
     s = smtplib.SMTP('smtp.gmail.com', 587)
@@ -34,4 +34,4 @@ def send(q, do, place, hos):
 
 
 if __name__ == '__main__':
-    send("A107", "ซักประวัติ", "จุดซักประวัติ","รพ.บางระจัน")
+    send("tehnplk@gmail.com", "A107", "ซักประวัติ", "จุดซักประวัติ", "รพ.บางระจัน")
