@@ -28,7 +28,8 @@ def send(q):
     s.login('alerthosqueue@gmail.com', 'Qazwsxedcr112233')
     r = s.sendmail(msg['From'], [msg['To']], msg.as_string())
     s.quit()
-    current_time = datetime.datetime.now()
+    current_time = str(datetime.datetime.now())
+    current_time = current_time[:-7]
     print('Send...', current_time)
 
 
