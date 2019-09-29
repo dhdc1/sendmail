@@ -13,9 +13,11 @@ def send_mail(to, q, do, place, hos):
     number = ("แจ้งเตือน!!! หมายเลข {}".format(q)).encode('utf-8').decode()
     text = ("อีก 10 คิว จะถึงคิว {} ของท่าน กรุณาไปรอที่บริเวณ".format(do)).encode('utf-8').decode()
     place = place.encode('utf-8').decode()
-    body = """  <h1 style='color:green'>{0}</h1>
-                <h1 style='color:blue'>{1}</h1>
-                <h2>{2} <u>{3}</u></h2> """.format(hos, number, text, place)
+    body = """  <div style='background-color:pink;padding-top:10px;padding-bottom:20px'>
+                    <h1 style='color:green'>{0}</h1>
+                    <h1 style='color:blue'>{1}</h1>
+                    <h2>{2} <u>{3}</u></h2> 
+                </div> """.format(hos, number, text, place)
     msg = MIMEText(body, 'html', 'utf-8')
 
     msg['Subject'] = Header(number, "utf-8")
@@ -35,4 +37,4 @@ def send_mail(to, q, do, place, hos):
 
 
 if __name__ == '__main__':
-    send_mail("tehnplk@gmail.com", "A109", "ซักประวัติ", "จุดซักประวัติ", "รพ.บางระจัน")
+    send_mail("tehnplk@gmail.com", "D109", "รับยา", "ห้องจ่ายยา", "รพ.บางระจัน")
